@@ -72,22 +72,15 @@ class MovementAdapter(
             binding.textView22.text = data.date
             binding.textView21.also {
                 when (data.type) {
-                    TypeAmount.INCREASE -> {
-                        it.setTextColor(itemView.context.resources.getColor(R.color.increase))
-                        it.text = data.getAmountFormatted()
-                    }
-                    TypeAmount.DECREASE -> {
-                        it.setTextColor(itemView.context.resources.getColor(R.color.decrease))
-                        it.text = data.getAmountFormatted()
-                    }
-                    TypeAmount.NEUTRAL -> {
-                        it.setTextColor(itemView.context.resources.getColor(R.color.blue))
-                        it.text = data.getAmountFormatted()
-                    }
+                    TypeAmount.INCREASE -> it.setTextColor(itemView.context.resources.getColor(R.color.increase))
+
+                    TypeAmount.DECREASE -> it.setTextColor(itemView.context.resources.getColor(R.color.decrease))
+
+                    TypeAmount.NEUTRAL -> it.setTextColor(itemView.context.resources.getColor(R.color.blue))
                 }
+                it.text = data.getAmountFormatted()
             }
         }
-
 
 
     }
