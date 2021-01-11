@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BbvaAndroid</string>
+    <string name="linea_bbva">Línea BBVA</string>
+    <string name="operacion">Operación</string>
+    <string name="qr_codi">QR + CoDi</string>
+    <string name="token">Tóken móvil</string>
+    <string name="password">Contraseña</string>
+    <string name="que_tal">¿Qué tal tu día hoy?</string>
+    <string name="hola_abel">Hola, Abel</string>
+    <string name="olvide_contra">Olvidé mi contraseña</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tus_cuentas">tus cuentas</string>
+</resources>

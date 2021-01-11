@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/card_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/ic_icon_feather_credit_card"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="Tarjeta digital"
+        android:textColor="@color/blue"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintStart_toStartOf="@+id/include"
+        app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Desactivar"
+        android:textColor="@color/blue"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/include"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
