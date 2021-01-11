@@ -39,10 +39,7 @@ class CardAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = list[position]
         when (item.type) {
-            TypeCard.MAIN -> {
-                (holder as MainHolder).bind(item)
-
-            }
+            TypeCard.MAIN -> (holder as MainHolder).bind(item)
             TypeCard.SECONDARY -> (holder as SecondaryHolder).bind(item)
         }
     }

@@ -15,12 +15,12 @@ data class MovementView(
     val date: String?
 ) {
     fun getAmountFormatted(): String {
-        var amount = ""
+        var amountText = ""
         when (type) {
-            TypeAmount.INCREASE -> amount = "+ S/ $amount"
-            TypeAmount.DECREASE -> amount = "- S/ $amount"
-            TypeAmount.NEUTRAL -> amount = "S/ $amount"
+            TypeAmount.INCREASE -> amountText = "+ S/ $amount"
+            TypeAmount.DECREASE -> amountText = "- S/ $amount"
+            TypeAmount.NEUTRAL -> amountText = "S/ $amount"
         }
-        return amount
+        return amountText
     }
 }

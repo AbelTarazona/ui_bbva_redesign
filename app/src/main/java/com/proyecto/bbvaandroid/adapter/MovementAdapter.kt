@@ -7,6 +7,7 @@ import com.proyecto.bbvaandroid.R
 import com.proyecto.bbvaandroid.databinding.ItemMovementBinding
 import com.proyecto.bbvaandroid.databinding.ItemMovementHeaderBinding
 import com.proyecto.bbvaandroid.model.MovementView
+import com.proyecto.bbvaandroid.util.TypeAmount
 import com.proyecto.bbvaandroid.util.TypeMovement
 import com.proyecto.bbvaandroid.util.inflate
 
@@ -67,6 +68,27 @@ class MovementAdapter(
         private val binding = ItemMovementBinding.bind(view)
         fun bind(data: MovementView) {
             binding.textView19.text = data.title
+            binding.textView20.text = data.detail
+            binding.textView22.text = data.date
+            binding.textView21.also {
+                when (data.type) {
+                    TypeAmount.INCREASE -> {
+                        it.setTextColor(itemView.context.resources.getColor(R.color.increase))
+                        it.text = data.getAmountFormatted()
+                    }
+                    TypeAmount.DECREASE -> {
+                        it.setTextColor(itemView.context.resources.getColor(R.color.decrease))
+                        it.text = data.getAmountFormatted()
+                    }
+                    TypeAmount.NEUTRAL -> {
+                        it.setTextColor(itemView.context.resources.getColor(R.color.blue))
+                        it.text = data.getAmountFormatted()
+                    }
+                }
+            }
         }
+
+
+
     }
 }

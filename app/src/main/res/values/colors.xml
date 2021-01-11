@@ -17,4 +17,7 @@
     <color name="background">#E5F0F6</color>
     <color name="line">#C0D4DF</color>
 
+    <color name="increase">#5FBE83</color>
+    <color name="decrease">#E06273</color>
+
 </resources>
