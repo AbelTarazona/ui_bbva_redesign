@@ -33,7 +33,8 @@ fun getCards() = listOf(
     Card(card = "*62399", type = TypeCard.SECONDARY)
 )
 
-fun getMovements() = listOf(
+// Mock response from webservice
+fun getMovementsResponse() = listOf(
     Movements(
         title = "", list = listOf(
             Movement(
@@ -46,7 +47,7 @@ fun getMovements() = listOf(
             Movement(
                 title = "Spei enviado azteca",
                 detail = "Transferencia interbancaria",
-                amount = 1600.0,
+                amount = 3400.0,
                 type = TypeAmount.DECREASE,
                 date = "Hoy"
             ),
@@ -57,14 +58,14 @@ fun getMovements() = listOf(
             Movement(
                 title = "Su pago en efectivo",
                 detail = "Movimiento BBVA",
-                amount = 1600.0,
+                amount = 190.0,
                 type = TypeAmount.NEUTRAL,
                 date = "Hoy"
             ),
             Movement(
                 title = "Spei enviado azteca",
                 detail = "Transferencia interbancaria",
-                amount = 1600.0,
+                amount = 50.0,
                 type = TypeAmount.DECREASE,
                 date = "Hoy"
             ),
@@ -72,37 +73,27 @@ fun getMovements() = listOf(
     )
 )
 
-fun getFormattedMovement(): MutableList<MovementView> {
-    val defaultList = getMovements()
-    val listForView = mutableListOf<MovementView>()
+fun getMovements(): ArrayList<UIMovementModel> {
+    val res = getMovementsResponse()
+    val list = arrayListOf<UIMovementModel>()
 
-    for (item in defaultList) {
-        listForView.add(
-            MovementView(
-                title = item.title,
-                typeView = TypeMovement.HEADER,
-                detail = null,
-                amount = null,
-                type = null,
-                date = null
-            )
-        )
+    for (movements in res) {
+        if (movements.title.isNotEmpty()) {
+            list.add(UIMovementModel.HeaderModel(movements.title))
+        }
 
-        for (child in item.list) {
-            listForView.add(
-                MovementView(
-                    title = child.title,
-                    typeView = TypeMovement.SECONDARY,
-                    detail = child.detail,
-                    amount = child.amount,
-                    type = child.type,
-                    date = child.date
-                )
-            )
+        for (child in movements.list) {
+            list.add(UIMovementModel.MovementModel(child))
         }
     }
 
-    return listForView
+    return list
+}
+
+
+sealed class UIMovementModel {
+    class HeaderModel(val title: String) : UIMovementModel()
+    class MovementModel(val item: Movement) : UIMovementModel()
 }
 
 enum class Options {
@@ -122,9 +113,4 @@ enum class TypeAmount {
     INCREASE,
     DECREASE,
     NEUTRAL
-}
-
-enum class TypeMovement {
-    HEADER,
-    SECONDARY
 }

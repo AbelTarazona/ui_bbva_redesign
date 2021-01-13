@@ -1,61 +1,52 @@
 package com.proyecto.bbvaandroid.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.proyecto.bbvaandroid.R
 import com.proyecto.bbvaandroid.databinding.ItemMovementBinding
 import com.proyecto.bbvaandroid.databinding.ItemMovementHeaderBinding
-import com.proyecto.bbvaandroid.model.MovementView
 import com.proyecto.bbvaandroid.util.TypeAmount
-import com.proyecto.bbvaandroid.util.TypeMovement
-import com.proyecto.bbvaandroid.util.inflate
+import com.proyecto.bbvaandroid.util.UIMovementModel
 
 /**
  * Created by AbelTarazona on 10/01/2021
  */
 class MovementAdapter(
-    private val list: List<MovementView>
+    private val list: ArrayList<UIMovementModel>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view: View
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val v = layoutInflater.inflate(viewType, parent, false)
 
-        when (viewType) {
-            TypeMovement.HEADER.ordinal -> {
-                view = parent.inflate(R.layout.item_movement_header)
-                return HeaderHolder(view)
-            }
-
-            TypeMovement.SECONDARY.ordinal -> {
-                view = parent.inflate(R.layout.item_movement)
-                return ItemHolder(view)
-            }
+        return when (viewType) {
+            R.layout.item_movement_header -> HeaderHolder(v)
+            R.layout.item_movement -> ItemHolder(v)
+            else -> null!!
         }
-
-        return null!!
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = list[position]
-        when (item.typeView) {
-            TypeMovement.HEADER -> (holder as HeaderHolder).bind(item)
-            TypeMovement.SECONDARY -> (holder as ItemHolder).bind(item)
+        when (holder) {
+            is HeaderHolder -> holder.bind(item as UIMovementModel.HeaderModel)
+            is ItemHolder -> holder.bind(item as UIMovementModel.MovementModel)
         }
     }
 
     override fun getItemCount(): Int = list.size
 
-    override fun getItemViewType(position: Int): Int {
-        if (!list.isNullOrEmpty()) {
-            val item = list[position]
-            return item.typeView.ordinal
-        }
-        return -1
+    override fun getItemViewType(position: Int) = when (list[position]) {
+        is UIMovementModel.HeaderModel -> R.layout.item_movement_header
+        is UIMovementModel.MovementModel -> R.layout.item_movement
+        null -> throw IllegalStateException("Unknown view")
     }
 
     class HeaderHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemMovementHeaderBinding.bind(view)
-        fun bind(data: MovementView) {
+        fun bind(data: UIMovementModel.HeaderModel) {
             if (data.title.isEmpty()) {
                 binding.textView23.visibility = View.GONE
             } else {
@@ -66,19 +57,19 @@ class MovementAdapter(
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemMovementBinding.bind(view)
-        fun bind(data: MovementView) {
-            binding.textView19.text = data.title
-            binding.textView20.text = data.detail
-            binding.textView22.text = data.date
+        fun bind(data: UIMovementModel.MovementModel) {
+            binding.textView19.text = data.item.title
+            binding.textView20.text = data.item.detail
+            binding.textView22.text = data.item.date
             binding.textView21.also {
-                when (data.type) {
+                when (data.item.type) {
                     TypeAmount.INCREASE -> it.setTextColor(itemView.context.resources.getColor(R.color.increase))
 
                     TypeAmount.DECREASE -> it.setTextColor(itemView.context.resources.getColor(R.color.decrease))
 
                     TypeAmount.NEUTRAL -> it.setTextColor(itemView.context.resources.getColor(R.color.blue))
                 }
-                it.text = data.getAmountFormatted()
+                it.text = data.item.getAmountFormatted()
             }
         }
 

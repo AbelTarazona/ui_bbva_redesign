@@ -10,10 +10,7 @@ import com.proyecto.bbvaandroid.adapter.MovementAdapter
 import com.proyecto.bbvaandroid.adapter.OptionAdapter
 import com.proyecto.bbvaandroid.databinding.ActivityDetailCardBinding
 import com.proyecto.bbvaandroid.databinding.ActivityMainBinding
-import com.proyecto.bbvaandroid.util.getFormattedMovement
-import com.proyecto.bbvaandroid.util.getOptions
-import com.proyecto.bbvaandroid.util.getOptionsDetail
-import com.proyecto.bbvaandroid.util.viewBinding
+import com.proyecto.bbvaandroid.util.*
 
 class DetailCardActivity : AppCompatActivity() {
 
@@ -28,7 +25,7 @@ class DetailCardActivity : AppCompatActivity() {
         configBar()
 
         adapterOption = OptionAdapter()
-        adapterMovement = MovementAdapter(getFormattedMovement())
+        adapterMovement = MovementAdapter(getMovements())
 
         binding.include3.rvOptionsDetail.adapter = adapterOption
         adapterOption.submitList(getOptionsDetail())

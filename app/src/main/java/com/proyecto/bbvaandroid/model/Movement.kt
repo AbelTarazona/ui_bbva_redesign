@@ -11,4 +11,14 @@ data class Movement(
     val amount: Double,
     val type: TypeAmount,
     val date: String
-)
+) {
+    fun getAmountFormatted(): String {
+        var amountText = ""
+        amountText = when (type) {
+            TypeAmount.INCREASE -> "+ S/ $amount"
+            TypeAmount.DECREASE -> "- S/ $amount"
+            TypeAmount.NEUTRAL -> "S/ $amount"
+        }
+        return amountText
+    }
+}

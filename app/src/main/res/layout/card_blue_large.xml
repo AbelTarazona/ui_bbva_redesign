@@ -32,7 +32,7 @@
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="*62396" />
+            android:text="*62396" />
 
         <ImageView
             android:id="@+id/imageView12"
