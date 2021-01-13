@@ -6,49 +6,49 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvAccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="001ah7297"
         android:textColor="@color/blue_3"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/tvCardNumber"
+        app:layout_constraintEnd_toStartOf="@+id/tvAccountAmount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvAccountAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:textColor="@color/blue"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCardNumber"
         app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/tvAccount"
         tools:text="$20,000" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="15dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAccountAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/tvAccountAmount"
         app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
         app:tint="@color/blue_2" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tvCardNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:textColor="@color/blue_4"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/tvAccount"
+        app:layout_constraintTop_toBottomOf="@+id/tvAccount"
         tools:text="*37265" />
 </androidx.constraintlayout.widget.ConstraintLayout>

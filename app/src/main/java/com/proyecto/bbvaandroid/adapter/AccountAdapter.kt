@@ -30,9 +30,9 @@ class AccountAdapter :
         private val binding = ItemAccountBinding.bind(view)
         fun bind(data: Account) {
             with(binding) {
-                textView9.text = data.account
-                textView11.text = data.card
-                textView10.text = data.getFormattedAmount()
+                tvAccount.text = data.account
+                tvCardNumber.text = data.card
+                tvAccountAmount.text = data.getFormattedAmount()
             }
         }
     }

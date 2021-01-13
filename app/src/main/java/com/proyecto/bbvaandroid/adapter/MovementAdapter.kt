@@ -48,9 +48,9 @@ class MovementAdapter(
         private val binding = ItemMovementHeaderBinding.bind(view)
         fun bind(data: UIMovementModel.HeaderModel) {
             if (data.title.isEmpty()) {
-                binding.textView23.visibility = View.GONE
+                binding.tvTitleHeader.visibility = View.GONE
             } else {
-                binding.textView23.text = data.title
+                binding.tvTitleHeader.text = data.title
             }
         }
     }
@@ -58,10 +58,10 @@ class MovementAdapter(
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemMovementBinding.bind(view)
         fun bind(data: UIMovementModel.MovementModel) {
-            binding.textView19.text = data.item.title
-            binding.textView20.text = data.item.detail
-            binding.textView22.text = data.item.date
-            binding.textView21.also {
+            binding.tvTitleMovement.text = data.item.title
+            binding.tvDetailMovement.text = data.item.detail
+            binding.tvDateMovement.text = data.item.date
+            binding.tvAmountMovement.also {
                 when (data.item.type) {
                     TypeAmount.INCREASE -> it.setTextColor(itemView.context.resources.getColor(R.color.increase))
 

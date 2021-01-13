@@ -8,7 +8,7 @@
     android:background="@drawable/background_item_movement">
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/tvTitleMovement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -16,42 +16,42 @@
         tools:text="Su pago en efectivo"
         android:textColor="@color/blue"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintBottom_toTopOf="@+id/tvDetailMovement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/tvDetailMovement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         tools:text="Movimiento BBVA"
         android:textColor="@color/blue_6"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintStart_toStartOf="@+id/tvTitleMovement"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleMovement" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/tvAmountMovement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         tools:text="+ $ 1,600.00"
         android:textStyle="bold"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
+        app:layout_constraintBottom_toTopOf="@+id/tvDateMovement"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleMovement"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/tvDateMovement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Hoy"
         android:textColor="@color/blue_6"
-        app:layout_constraintBottom_toBottomOf="@+id/textView20"
-        app:layout_constraintEnd_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetailMovement"
+        app:layout_constraintEnd_toEndOf="@+id/tvAmountMovement"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmountMovement" />
 </androidx.constraintlayout.widget.ConstraintLayout>
